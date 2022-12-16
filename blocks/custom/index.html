@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Orbitron">                                 
+    <link rel="stylesheet" crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/@finos/perspective-viewer/dist/css/material-dark.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/@finos/perspective-viewer@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@finos/perspective-viewer-datagrid@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@finos/perspective-viewer-d3fc@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@finos/perspective@latest"></script>
+
+    <script src="custom_plugin.js"></script>
+</head>
+
+<body>
+    <perspective-viewer>
+    </perspective-viewer>
+
+    <script>
+
+        window.addEventListener('DOMContentLoaded', async function () {
+            const viewer = document.getElementsByTagName('perspective-viewer')[0];
+            const data = await fetch("https://cdn.jsdelivr.net/npm/superstore-arrow/superstore.arrow");
+            const arr = await data.arrayBuffer();
+            const table = perspective.worker().table(arr.slice());
+            viewer.load(table);
+            viewer.restore({
+                plugin: "Custom Datagrid",
+                columns: ["Profit","Sub-Category","State","Sales","Category","Order Date"]
+            });
+            viewer.toggleConfig();
+        });
+
+    </script>
+
+    <style>
+        perspective-viewer td {
+            height: 24px;
+        }
+
+        perspective-viewer table, perspective-viewer table tr:hover {
+            color: #cfd8dc;
+        }
+
+        perspective-viewer tbody:hover tr {
+            opacity: 0.5;
+            transition: opacity 0.2s ease-in;
+        }
+
+        perspective-viewer tbody:hover tr:hover td div {
+            transform: scaleY(1.3);
+            transform-origin: 0;
+            transition: transform 0.2s ease-in;
+        }
+
+        perspective-viewer tbody:hover tr:hover {
+            box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+            opacity: 1;
+            transition: none;
+        }
+
+        perspective-viewer tbody:hover tr:hover td {
+            background: none;
+            opacity: 1;
+        }
+
+        perspective-viewer tbody:hover tr:nth-child(even):hover td,
+        perspective-viewer tbody tr:nth-child(even) td {
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        perspective-viewer td.orbitron {
+            text-align: center !important;
+            font-family: Orbitron;
+        }
+        
+        perspective-viewer {
+             flex: 1;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 0;
+            padding: 0;
+        }
+
+        input {
+            margin: 24px;
+            max-width: 300px;
+        }
+
+        @media (max-width: 600px) {
+            html {
+                overflow: hidden;
+            }
+
+            body {
+                position: fixed;
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                overflow: hidden;
+                touch-action: none;
+            }
+        }
+    </style>
+</body>
+
+</html>
