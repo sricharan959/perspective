@@ -7,7 +7,7 @@
  *
  */
 
-import perspective from "https://cdn.jsdelivr.net/npm/@finos/perspective@2.0.1/dist/cdn/perspective.js";
+import perspective from "https://cdn.jsdelivr.net/npm/@finos/perspective@2.1.1/dist/cdn/perspective.js";
 
 const WIDTH = 200;
 const HEIGHT = 200;

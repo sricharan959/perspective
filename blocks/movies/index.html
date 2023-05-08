@@ -1,32 +1,15 @@
 <html>
     <head>
-        <meta
-            name="viewport"
-            content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"
-        />
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no" />
 
-        <link
-            rel="stylesheet"
-            crossorigin="anonymous"
-            href="https://cdn.jsdelivr.net/npm/@finos/perspective-workspace/dist/css/pro-dark.css"
-        />
+        <link rel="stylesheet" crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/@finos/perspective-viewer/dist/css/pro-dark.css" />
+        <link rel="stylesheet" crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/@finos/perspective-workspace/dist/css/pro-dark.css" />
 
-        <script
-            type="module"
-            src="https://cdn.jsdelivr.net/npm/@finos/perspective-workspace@2.0.1/dist/cdn/perspective-workspace.js"
-        ></script>
-        <script
-            type="module"
-            src="https://cdn.jsdelivr.net/npm/@finos/perspective-viewer-datagrid@2.0.1/dist/cdn/perspective-viewer-datagrid.js"
-        ></script>
-        <script
-            type="module"
-            src="https://cdn.jsdelivr.net/npm/@finos/perspective-viewer-d3fc@2.0.1/dist/cdn/perspective-viewer-d3fc.js"
-        ></script>
-        <script
-            type="module"
-            src="https://cdn.jsdelivr.net/npm/@finos/perspective@2.0.1/dist/cdn/perspective.js"
-        ></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@finos/perspective-viewer@2.1.1/dist/cdn/perspective-viewer.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@finos/perspective-workspace@2.1.1/dist/cdn/perspective-workspace.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@finos/perspective-viewer-datagrid@2.1.1/dist/cdn/perspective-viewer-datagrid.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@finos/perspective-viewer-d3fc@2.1.1/dist/cdn/perspective-viewer-d3fc.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@finos/perspective@2.1.1/dist/cdn/perspective.js"></script>
 
         <style>
             body {
@@ -43,56 +26,11 @@
             }
 
             perspective-viewer {
-                --d3fc-positive--gradient: linear-gradient(
-                    #94d0ff,
-                    #8795e8,
-                    #966bff,
-                    #ad8cff,
-                    #c774e8,
-                    #c774a9,
-                    #ff6ad5,
-                    #ff6a8b,
-                    #ff8b8b,
-                    #ffa58b,
-                    #ffde8b,
-                    #cdde8b,
-                    #8bde8b,
-                    #20de8b
-                ) !important;
+                --d3fc-positive--gradient: linear-gradient(#94d0ff, #8795e8, #966bff, #ad8cff, #c774e8, #c774a9, #ff6ad5, #ff6a8b, #ff8b8b, #ffa58b, #ffde8b, #cdde8b, #8bde8b, #20de8b) !important;
 
-                --d3fc-negative--gradient: linear-gradient(
-                    #94d0ff,
-                    #8795e8,
-                    #966bff,
-                    #ad8cff,
-                    #c774e8,
-                    #c774a9,
-                    #ff6ad5,
-                    #ff6a8b,
-                    #ff8b8b,
-                    #ffa58b,
-                    #ffde8b,
-                    #cdde8b,
-                    #8bde8b,
-                    #20de8b
-                ) !important;
+                --d3fc-negative--gradient: linear-gradient(#94d0ff, #8795e8, #966bff, #ad8cff, #c774e8, #c774a9, #ff6ad5, #ff6a8b, #ff8b8b, #ffa58b, #ffde8b, #cdde8b, #8bde8b, #20de8b) !important;
 
-                --d3fc-full--gradient: linear-gradient(
-                    #94d0ff,
-                    #8795e8,
-                    #966bff,
-                    #ad8cff,
-                    #c774e8,
-                    #c774a9,
-                    #ff6ad5,
-                    #ff6a8b,
-                    #ff8b8b,
-                    #ffa58b,
-                    #ffde8b,
-                    #cdde8b,
-                    #8bde8b,
-                    #20de8b
-                ) !important;
+                --d3fc-full--gradient: linear-gradient(#94d0ff, #8795e8, #966bff, #ad8cff, #c774e8, #c774a9, #ff6ad5, #ff6a8b, #ff8b8b, #ffa58b, #ffde8b, #cdde8b, #8bde8b, #20de8b) !important;
             }
         </style>
     </head>
@@ -102,7 +40,7 @@
         </perspective-workspace>
 
         <script type="module">
-            import perspective from "https://cdn.jsdelivr.net/npm/@finos/perspective@2.0.1/dist/cdn/perspective.js";
+            import perspective from "https://cdn.jsdelivr.net/npm/@finos/perspective@2.1.1/dist/cdn/perspective.js";
 
             const SCHEMA = {
                 Title: "string",
@@ -131,9 +69,7 @@
                 const response = await request;
                 const json = await response.json();
                 for (const row of json) {
-                    row["Release Date"] = row["Release Date"]
-                        ? new Date(row["Release Date"]) || null
-                        : null;
+                    row["Release Date"] = row["Release Date"] ? new Date(row["Release Date"]) || null : null;
                 }
                 const table = await worker.table(SCHEMA);
                 table.update(json);
