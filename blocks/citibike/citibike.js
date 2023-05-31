@@ -1,4 +1,4 @@
-import perspective from "https://cdn.jsdelivr.net/npm/@finos/perspective@2.1.1/dist/cdn/perspective.js";
+import perspective from "https://cdn.jsdelivr.net/npm/@finos/perspective@2.2.0/dist/cdn/perspective.js";
 
 // Quick wrapper function for making a GET call.
 function get(url) {

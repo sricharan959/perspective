@@ -1,4 +1,4 @@
-import perspective from "https://cdn.jsdelivr.net/npm/@finos/perspective@2.1.1/dist/cdn/perspective.js";
+import perspective from "https://cdn.jsdelivr.net/npm/@finos/perspective@2.2.0/dist/cdn/perspective.js";
 
 window.addEventListener("DOMContentLoaded", function () {
     const worker = perspective.worker();
