@@ -1,4 +1,4 @@
-import perspective from "https://cdn.jsdelivr.net/npm/@finos/perspective@2.2.0/dist/cdn/perspective.js";
+import perspective from "https://cdn.jsdelivr.net/npm/@finos/perspective@2.3.0/dist/cdn/perspective.js";
 
 const MSG_BATCH_TIMEOUT = 50;
 const MSG_PER_BATCH = 10;
